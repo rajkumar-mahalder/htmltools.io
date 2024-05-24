@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Number Extractor</title>
+    <script>
+        function extractMobileNumbers() {
+            // Get the input text
+            var inputText = document.getElementById('inputText').value;
+
+            // Regular expression to find mobile numbers
+            var mobileRegex = /(\+91\s?)?[0-9]{5}\s?[0-9]{5}/g;
+
+            // Extract mobile numbers
+            var mobileNumbers = inputText.match(mobileRegex);
+
+            // Remove spaces from mobile numbers
+            for (var i = 0; i < mobileNumbers.length; i++) {
+                mobileNumbers[i] = mobileNumbers[i].replace(/\s/g, '');
+            }
+
+            // Display extracted mobile numbers
+            document.getElementById('output').innerText = mobileNumbers.join('\n');
+        }
+    </script>
+</head>
+<body>
+    <h1>Mobile Number Extractor</h1>
+    <textarea id="inputText" rows="10" cols="50" placeholder="Paste your text here..."></textarea><br>
+    <button onclick="extractMobileNumbers()">Extract Mobile Numbers</button><br>
+    <h2>Extracted Mobile Numbers:</h2>
+    <pre id="output"></pre>
+</body>
+</html>
